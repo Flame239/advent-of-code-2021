@@ -2,7 +2,7 @@ val depths: List<Int> by lazy {
     readFile("SonarSweep").split("\n").map { Integer.parseInt(it) }
 }
 
-fun increments() {
+fun increments(): Int {
     var increments = 0
 
     for (i in 0..(depths.size - 2)) {
@@ -11,13 +11,13 @@ fun increments() {
         }
     }
 
-    println(increments)
+    return increments
 }
 
 // 1737
 // We dont have to calculate the sum
 // Example: first 2 windows - [1,2,3] and [2,3,4] differs only in '1' and '4', so we only need to compare them
-fun slidingWindowIncrements() {
+fun slidingWindowIncrements(): Int {
     var increments = 0
 
     for (i in 0..(depths.size - 4)) {
@@ -25,10 +25,10 @@ fun slidingWindowIncrements() {
             increments++
         }
     }
-    println(increments)
+    return increments
 }
 
-fun bothIncrements() {
+fun bothIncrements(): Pair<Int, Int> {
     var windowIncrements = 0
     var normalIncrements = 0
 
@@ -48,12 +48,11 @@ fun bothIncrements() {
         }
     }
 
-    println(normalIncrements)
-    println(windowIncrements)
+    return Pair(normalIncrements, windowIncrements)
 }
 
 fun main() {
-    increments()
-    slidingWindowIncrements()
-    bothIncrements()
+    println(increments())
+    println(slidingWindowIncrements())
+    println(bothIncrements())
 }
