@@ -14,17 +14,16 @@ fun increments() {
     println(increments)
 }
 
+// 1737
+// We dont have to calculate the sum
+// Example: first 2 windows - [1,2,3] and [2,3,4] differs only in '1' and '4', so we only need to compare them
 fun slidingWindowIncrements() {
     var increments = 0
 
-    var curSum = depths[0] + depths[1] + depths[2]
-
     for (i in 0..(depths.size - 4)) {
-        val nextSum = curSum - depths[i] + depths[i + 3]
-        if (nextSum > curSum) {
+        if (depths[i + 3] > depths[i]) {
             increments++
         }
-        curSum = nextSum
     }
     println(increments)
 }
@@ -33,14 +32,10 @@ fun bothIncrements() {
     var windowIncrements = 0
     var normalIncrements = 0
 
-    var curSum = depths[0] + depths[1] + depths[2]
-
     for (i in 0..(depths.size - 4)) {
-        val nextSum = curSum - depths[i] + depths[i + 3]
-        if (nextSum > curSum) {
+        if (depths[i + 3] > depths[i]) {
             windowIncrements++
         }
-        curSum = nextSum
 
         if (depths[i + 1] > depths[i]) {
             normalIncrements++
