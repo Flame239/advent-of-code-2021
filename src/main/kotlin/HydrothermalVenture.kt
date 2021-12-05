@@ -7,14 +7,14 @@ import kotlin.math.sign
 
 val segments: List<Segment> by lazy {
     readFile("HydrothermalVenture").split("\n").map {
-        val points = it.split(" -> ")
-        val begin = points[0].split(",")
-        val end = points[1].split(",")
+        val (begin, end) = it.split(" -> ")
+        val (beginX, beginY) = begin.split(",")
+        val (endX, endY) = end.split(",")
         Segment(
-            Integer.parseInt(begin[0]),
-            Integer.parseInt(begin[1]),
-            Integer.parseInt(end[0]),
-            Integer.parseInt(end[1])
+            Integer.parseInt(beginX),
+            Integer.parseInt(beginY),
+            Integer.parseInt(endX),
+            Integer.parseInt(endY)
         )
     }
 }
