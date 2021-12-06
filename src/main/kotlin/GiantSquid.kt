@@ -6,6 +6,7 @@ val input: Input by lazy {
     var curRow = 2
     while (curRow < lines.size) {
         val curBoard: MutableList<List<Int>> = mutableListOf()
+        // could use lines.drop(1).chunked(6)
         for (i in 0 until 5) {
             curBoard.add(lines[curRow + i].split(Regex("\\s+")).map { Integer.parseInt(it) })
         }
