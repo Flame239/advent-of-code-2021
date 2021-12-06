@@ -6,17 +6,12 @@ fun fishesAfter(fishes: List<Int>, days: Int): Long {
     val fishesWithTimer = LongArray(9)
     fishes.forEach { fishesWithTimer[it]++ }
 
-    for (i in 0 until days) {
+    repeat(days) {
         val doneFishes = fishesWithTimer[0]
 
-        fishesWithTimer[0] = fishesWithTimer[1]
-        fishesWithTimer[1] = fishesWithTimer[2]
-        fishesWithTimer[2] = fishesWithTimer[3]
-        fishesWithTimer[3] = fishesWithTimer[4]
-        fishesWithTimer[4] = fishesWithTimer[5]
-        fishesWithTimer[5] = fishesWithTimer[6]
-        fishesWithTimer[6] = fishesWithTimer[7]
-        fishesWithTimer[7] = fishesWithTimer[8]
+        for (i in 0..7) {
+            fishesWithTimer[i] = fishesWithTimer[i + 1]
+        }
 
         fishesWithTimer[6] += doneFishes
         fishesWithTimer[8] = doneFishes
