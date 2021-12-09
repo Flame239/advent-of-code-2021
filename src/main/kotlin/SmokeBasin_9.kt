@@ -33,6 +33,28 @@ fun findLowestPoints(): List<Pair<Int, Int>> {
     return lowestPoints
 }
 
+fun findLowestPointsImproved(): List<Pair<Int, Int>> {
+    val h = cave.size
+    val w = cave[0].size
+
+    val lowestPoints = mutableListOf<Pair<Int, Int>>()
+
+    for (i in 0 until h) {
+        for (j in 0 until w) {
+            val cur = cave[i][j]
+            val surrounding = listOfNotNull(
+                cave[i].getOrNull(j + 1),
+                cave[i].getOrNull(j - 1),
+                cave.getOrNull(i - 1)?.get(j),
+                cave.getOrNull(i + 1)?.get(j),
+            )
+            if (cur < surrounding.minOrNull()!!) {
+                lowestPoints.add(Pair(i, j))
+            }
+        }
+    }
+    return lowestPoints
+}
 
 fun findRiskLevel(): Int = findLowestPoints().sumOf { (i, j) -> cave[i][j] + 1 }
 
