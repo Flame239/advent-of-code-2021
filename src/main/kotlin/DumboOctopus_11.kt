@@ -53,16 +53,11 @@ fun incrementRecursively(energyLevels: Array<IntArray>, flashed: Array<BooleanAr
     }
     flashed[i][j] = true
     energyLevels[i][j] = 0
-    incrementRecursively(energyLevels, flashed, i + 1, j)
-    incrementRecursively(energyLevels, flashed, i + 1, j + 1)
-    incrementRecursively(energyLevels, flashed, i + 1, j - 1)
-
-    incrementRecursively(energyLevels, flashed, i - 1, j)
-    incrementRecursively(energyLevels, flashed, i - 1, j + 1)
-    incrementRecursively(energyLevels, flashed, i - 1, j - 1)
-
-    incrementRecursively(energyLevels, flashed, i, j + 1)
-    incrementRecursively(energyLevels, flashed, i, j - 1)
+    for (di in -1..1) {
+        for (dj in -1..1) {
+            incrementRecursively(energyLevels, flashed, i + di, j + dj)
+        }
+    }
 }
 
 fun outOfBounds(i: Int, j: Int, maxI: Int, maxJ: Int) = i < 0 || i >= maxI || j < 0 || j >= maxJ
