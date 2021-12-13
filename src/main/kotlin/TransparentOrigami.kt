@@ -64,7 +64,7 @@ fun printPaperAfterFolding() {
 
     for (y in 0 until h) {
         for (x in 0 until w) {
-            print(if (paper[y][x]) "* " else "  ")
+            print(if (paper[y][x]) "█ " else "  ")
         }
         println()
     }
