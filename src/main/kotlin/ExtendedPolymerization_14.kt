@@ -2,9 +2,8 @@ val polymerInput: PolymerInput by lazy {
     val lines = readFile("ExtendedPolymerization").split("\n")
     val initialPolymer = lines[0]
 
-    val rules = lines.drop(2).map {
-        val (pair, insert) = it.split(" -> ")
-        Rule(pair, insert)
+    val rules = lines.drop(2).map { line ->
+        line.split(" -> ").let { Rule(it[0], it[1]) }
     }
     PolymerInput(initialPolymer, rules)
 }
