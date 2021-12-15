@@ -43,7 +43,7 @@ fun getBigField(field: Array<IntArray>): Array<IntArray> {
     for (i in 0 until bigH) {
         for (j in 0 until bigW) {
             val delta = i / h + j / w
-            var newVal = field[i % 100][j % 100] + delta
+            var newVal = field[i % h][j % w] + delta
             if (newVal > 9) newVal -= 9
             bigField[i][j] = newVal
         }
