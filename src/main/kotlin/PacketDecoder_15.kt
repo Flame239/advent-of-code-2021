@@ -1,5 +1,5 @@
 val binaryPacket: String by lazy {
-    readFile("PacketDecoder").map { hexCharToBinaryString(it) }.joinToString(separator = "")
+    readFile("PacketDecoder").map { it.digitToInt(16).toString(2).padStart(4, '0') }.joinToString("")
 }
 
 fun parsePacket(packet: String, start: Int = 0): Pair<Packet, Int> {
@@ -90,20 +90,8 @@ fun main() {
     println(calculate(packet))
 }
 
-open class Packet(val version: Int, val typeId: Int) {
-    override fun toString(): String {
-        return "Packet(version=$version, typeId=$typeId)"
-    }
-}
+open class Packet(val version: Int, val typeId: Int) {}
 
-class ValuePacket(val value: Long, version: Int, typeId: Int) : Packet(version, typeId) {
-    override fun toString(): String {
-        return "ValuePacket(value=$value)"
-    }
-}
+class ValuePacket(val value: Long, version: Int, typeId: Int) : Packet(version, typeId) {}
 
-class OperatorPacket(val subPackets: List<Packet>, version: Int, typeId: Int) : Packet(version, typeId) {
-    override fun toString(): String {
-        return "OperatorPacket(subPackets=$subPackets)"
-    }
-}
+class OperatorPacket(val subPackets: List<Packet>, version: Int, typeId: Int) : Packet(version, typeId) {}
