@@ -33,3 +33,12 @@ fun hexCharToBinaryString(char: Char): String {
         else -> error("Not a hex char")
     }
 }
+
+fun <T> List<T>.orderedPairs(): Sequence<Pair<T, T>> = sequence {
+    for (i in 0 until size - 1) {
+        for (j in 0 until size - 1) {
+            if (i == j) continue
+            yield(get(i) to get(j))
+        }
+    }
+}
