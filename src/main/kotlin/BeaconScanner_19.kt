@@ -30,7 +30,7 @@ fun main() {
     scannersLeft.removeAt(0)
     while (scannersLeft.isNotEmpty()) {
         for (i in scannersLeft.indices) {
-            val curTranslation = overlap(scanners[0], scannersLeft[i])
+            val curTranslation = overlap(mainScanner, scannersLeft[i])
             if (curTranslation != null) {
                 scannerTranslations.add(curTranslation)
                 scannersLeft.removeAt(i)
