@@ -9,6 +9,11 @@ infix fun Int.toward(to: Int): IntProgression {
     return IntProgression.fromClosedRange(this, to, step)
 }
 
+infix fun Int.towardExclusiveFrom(to: Int): IntProgression {
+    val step = if (this > to) -1 else 1
+    return IntProgression.fromClosedRange(this + step, to, step)
+}
+
 fun String.sortAlphabetically() = String(toCharArray().apply { sort() })
 
 fun <T> List<T>.orderedPairs(): Sequence<Pair<T, T>> = sequence {
