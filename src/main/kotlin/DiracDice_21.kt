@@ -1,7 +1,6 @@
 // all is 0 based
-
-private val p1Start = 3
-private val p2Start = 9
+private const val p1Start = 3
+private const val p2Start = 9
 
 fun simulateGame(): Int {
     val points = mutableListOf(0, 0)
